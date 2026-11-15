@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dhtxee2joukfd"]
+
+[ext_resource type="Texture2D" uid="uid://cjge4m6bxcymj" path="res://images__1_-removebg-preview.png" id="1_wtcfe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrn7f"]
+
+[sub_resource type="Animation" id="Animation_0e48y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images1RemovebgPreview:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126, -71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images1RemovebgPreview:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_epypp"]
+resource_name = "tomato"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images1RemovebgPreview:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(126, -71), Vector2(576, 730)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images1RemovebgPreview:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.6356416]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hol4"]
+_data = {
+&"RESET": SubResource("Animation_0e48y"),
+&"tomato": SubResource("Animation_epypp")
+}
+
+[node name="Node2D" type="Node2D" unique_id=10581609]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2008229919]
+sprite_frames = SubResource("SpriteFrames_lrn7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=499902703]
+libraries/ = SubResource("AnimationLibrary_0hol4")
+autoplay = &"tomato"
+
+[node name="Images1RemovebgPreview" type="Sprite2D" parent="." unique_id=2081081277]
+position = Vector2(126, -71)
+texture = ExtResource("1_wtcfe")

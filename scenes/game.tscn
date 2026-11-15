@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://c8rbyvvsoggim"]
 
 [ext_resource type="PackedScene" uid="uid://8ckeqvb5wo8s" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://d0xsk5dtkx5jn" path="res://scenes/static_body_2d.gd" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dhtxee2joukfd" path="res://node_2d.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://0omnwih2dp7x" path="res://scenes/area_2d.gd" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://dae4nys8eysaa" path="res://node_2d.gd" id="5_iywne"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yjj0d"]
 distance = -84.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiplf"]
+size = Vector2(1177, 27)
 
 [node name="game" type="Node2D" unique_id=667381942]
 
@@ -11,10 +18,18 @@ distance = -84.0
 position = Vector2(451, 276)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1344401144]
+script = ExtResource("2_lnu2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=558045664]
 position = Vector2(510, 562)
 shape = SubResource("WorldBoundaryShape2D_yjj0d")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D" unique_id=2003477849]
+script = ExtResource("3_lbhrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D" unique_id=585357698]
+position = Vector2(592.5, 665.5)
+shape = SubResource("RectangleShape2D_xiplf")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1390401393]
 
@@ -29,3 +44,10 @@ shape = SubResource("WorldBoundaryShape2D_yjj0d")
 position = Vector2(1068, 419.00003)
 rotation = -1.5591627
 shape = SubResource("WorldBoundaryShape2D_yjj0d")
+
+[node name="Node2D" parent="." unique_id=10581609 instance=ExtResource("2_yqjtg")]
+position = Vector2(25, 5)
+script = ExtResource("5_iywne")
+
+[connection signal="tree_entered" from="StaticBody2D" to="StaticBody2D" method="_on_tree_entered"]
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="player" method="_on_area_2d_body_entered"]

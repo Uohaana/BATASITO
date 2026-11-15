@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://buqo8qw05chvb"]
+
+[ext_resource type="Script" uid="uid://1dowhuivtx16" path="res://animated_sprite_2d.gd" id="2_joa5w"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7hefh"]
+load_path = "res://.godot/imported/images__1_-removebg-preview.png-8316aacfc62e921c1ff78cebb6ade9eb.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjj0d"]
+
+[sub_resource type="Animation" id="Animation_joa5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images1RemovebgPreview:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(90, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images1RemovebgPreview:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bka0x"]
+resource_name = "tomato_animation"
+length = 1.7
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images1RemovebgPreview:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333333, 1, 1.1666666, 1.3333334, 1.5, 1.6666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(90, -40), Vector2(115, 3.9999962), Vector2(191, 107), Vector2(290, 202), Vector2(351, 289), Vector2(400, 399), Vector2(453.00003, 475.00003), Vector2(491.00003, 562.00006), Vector2(521, 629.99994), Vector2(548.00006, 682.99994), Vector2(533.00006, 736)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images1RemovebgPreview:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333333, 1, 1.1666666, 1.3333334, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.33052748, 0.85839653, 1.365057, 2.3188574, 3.0546203, 3.7075486, 4.4246135, 5.1631427, 5.791547]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kg4fp"]
+_data = {
+&"RESET": SubResource("Animation_joa5w"),
+&"tomato_animation": SubResource("Animation_bka0x")
+}
+
+[node name="tomato" type="Node2D" unique_id=442437717]
+
+[node name="Images1RemovebgPreview" type="Sprite2D" parent="." unique_id=1286134079]
+position = Vector2(90, -40)
+scale = Vector2(0.73461545, 0.6857143)
+texture = SubResource("CompressedTexture2D_7hefh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Images1RemovebgPreview" unique_id=1139662963]
+position = Vector2(-122.513084, 58.33333)
+scale = Vector2(1.3612565, 1.4583333)
+sprite_frames = SubResource("SpriteFrames_yjj0d")
+frame_progress = 0.22825
+speed_scale = 2.0
+script = ExtResource("2_joa5w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Images1RemovebgPreview" unique_id=1362015985]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_kg4fp")
+autoplay = &"tomato_animation"
